@@ -1,10 +1,15 @@
-#NATHAN DE JAGER
+#   NATHAN DE JAGER
 from datetime import date
 from tkinter import *
-window=Tk()
+from tkinter import messagebox
+
+window = Tk()
 
 
 LIMIT_AGE = 18
+
+def clear():
+  age_entry.delete(0, END)
 
 
 def ask_for_birth_year():
@@ -20,27 +25,29 @@ def ask_for_birth_year():
             print_message(age)
 
     except ValueError:
-        print('This is not a number, try again.')
-
+        messagebox.showinfo("NOPE TRY AGAIN!!!!",'This is not a number, try again.')
+        window.destroy()
 
 def print_message(age):
-    mytext = 'You are %d years old.'
-    print(mytext % age)
+    my_text = 'You are %d years old.'
     if age < LIMIT_AGE:
-        print('YOU  NOT OLD ENOUGH T0 PLAY!')
+        messagebox.showinfo("YOU  NOT OLD ENOUGH!" ,'Goodbye!.' + my_text % age )
+        window.destroy()
+
     else:
-        print('Welcome To The Play.')
-
-
+        messagebox.showinfo('Welcome To The Play.', my_text % age)
+        window.destroy()
+        import login
 
 
 window.title('Age Checker')
 window.geometry("400x280")
-Label(window,width="300", text="Please enter details below", bg="orange",fg="white").pack()
-lbl=Label(window, text="Enter Year of Birth", fg='black', font=("Helvetica", 16)).place(x=100,y=90)
+Label(window, width="300", text="Please enter details below", bg="orange", fg="white").pack()
+lbl = Label(window, text="Enter Year of Birth", fg='black', font=("Helvetica", 16)).place(x=100, y=90)
 age_entry = Entry(window)
-age_entry.place(x=100,y=120)
-Button(window, text="Enter", width=10, height=1, bg="orange", command=ask_for_birth_year ).place(x=130, y=150)
+age_entry.place(x=100, y=120)
+Button(window, text="Enter", width=10, height=1, bg="orange", command=ask_for_birth_year).place(x=200, y=150)
+Button(window, text="Clear", width=10, height=1, bg="orange", command=clear).place(x=70, y=150)
 
 
 # if __name__ == '__main__':
@@ -50,9 +57,4 @@ Button(window, text="Enter", width=10, height=1, bg="orange", command=ask_for_bi
 #     print_message(age)
 
 
-
-
-
-
 window.mainloop()
-
