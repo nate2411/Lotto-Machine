@@ -2,31 +2,41 @@
 from datetime import date
 from tkinter import *
 from tkinter import messagebox
-
+import rsaidnumber
+from datetime import date
+from dateutil.relativedelta import relativedelta
 window = Tk()
 
 
 LIMIT_AGE = 18
 
 def clear():
-  age_entry.delete(0, END)
+  id_entry.delete(0, END)
 
 
 def ask_for_birth_year():
     try:
-        # nb = int(input('Enter Year Of Birth: '))
-        nb = int(age_entry.get())
-        if nb < 0:
-            print('Invalid year')
-        else:
-            print(nb)
-            current_year = date.today().year
-            age = current_year - nb
-            print_message(age)
+# Calculates the age.
+        id_number = rsaidnumber.parse(id_entry.get())
+        birth_date = id_number.date_of_birth
+        real_age = relativedelta(date.today(), birth_date.date())
+        real_age = real_age.years
+        # Checks if the id_number is valid.
+        if len(id_entry.get()) != 13:
+             messagebox.showerror("Error", "Please enter correct ID number")
 
-    except ValueError:
-        messagebox.showinfo("NOPE TRY AGAIN!!!!",'This is not a number, try again.')
-        window.destroy()
+        elif id_number == " ":
+            messagebox.showerror("Error", "Enter correct details")
+
+        elif real_age >= 18:
+             real_age = str(real_age)
+             messagebox.showinfo("You are " + real_age + " years old", "You are Welcome To Play")
+             window.destroy()
+             import login
+
+    except:
+        messagebox.showinfo("NOPE TRY AGAIN!!!!", 'This is not a number, try again.')
+
 
 def print_message(age):
     my_text = 'You are %d years old.'
@@ -37,15 +47,15 @@ def print_message(age):
     else:
         messagebox.showinfo('Welcome To The Play.', my_text % age)
         window.destroy()
-        import login
+
 
 
 window.title('Age Checker')
 window.geometry("400x280")
 Label(window, width="300", text="Please enter details below", bg="orange", fg="white").pack()
-lbl = Label(window, text="Enter Year of Birth", fg='black', font=("Helvetica", 16)).place(x=100, y=90)
-age_entry = Entry(window)
-age_entry.place(x=100, y=120)
+lbl = Label(window, text="Enter Your ID", fg='black', font=("Helvetica", 16)).place(x=110, y=90)
+id_entry = Entry(window)
+id_entry.place(x=100, y=120)
 Button(window, text="Enter", width=10, height=1, bg="orange", command=ask_for_birth_year).place(x=200, y=150)
 Button(window, text="Clear", width=10, height=1, bg="orange", command=clear).place(x=70, y=150)
 

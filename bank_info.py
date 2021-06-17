@@ -11,14 +11,14 @@ Label(window, text="Choose Your Bank", fg='black', font=("Helvetica", 16)).place
 bankchoosen = Combobox(window, width= 27)
 bankchoosen.place(x=80, y=50)
 
-bankchoosen['values'] = ('Standard Bank Group',
+bankchoosen['values'] = ('Standard Bank ',
                           'Capitec',
                          'Nedbank ',
                          'Bidvest Bank',
                          'Absa',
                          'FNB',
-                         'Investec',
-                         'Standard Bank')
+                         'Investec'
+                         )
 bankchoosen.current()
 
 Label(window, text="Account Holder Name", fg='black', font=("Helvetica", 16)).place(x=80,y=90)
