@@ -14,7 +14,7 @@ def clear():
   id_entry.delete(0, END)
 
 
-def ask_for_birth_year():
+def ask_for_id():
     try:
 # Calculates the age.
         id_number = rsaidnumber.parse(id_entry.get())
@@ -34,19 +34,18 @@ def ask_for_birth_year():
              window.destroy()
              import login
 
+        else:
+            if real_age < 18:
+             real_age = str(real_age)
+             messagebox.showinfo("You are " + real_age + " years old", "You not old Enough")
+             window.destroy()
+
     except:
-        messagebox.showinfo("NOPE TRY AGAIN!!!!", 'This is not a number, try again.')
+        messagebox.showinfo("NOPE TRY AGAIN!!!!", 'Please insert your ID number.')
 
 
-def print_message(age):
-    my_text = 'You are %d years old.'
-    if age < LIMIT_AGE:
-        messagebox.showinfo("YOU  NOT OLD ENOUGH!" ,'Goodbye!.' + my_text % age )
-        window.destroy()
 
-    else:
-        messagebox.showinfo('Welcome To The Play.', my_text % age)
-        window.destroy()
+
 
 
 
@@ -56,7 +55,7 @@ Label(window, width="300", text="Please enter details below", bg="orange", fg="w
 lbl = Label(window, text="Enter Your ID", fg='black', font=("Helvetica", 16)).place(x=110, y=90)
 id_entry = Entry(window)
 id_entry.place(x=100, y=120)
-Button(window, text="Enter", width=10, height=1, bg="orange", command=ask_for_birth_year).place(x=200, y=150)
+Button(window, text="Enter", width=10, height=1, bg="orange", command=ask_for_id).place(x=200, y=150)
 Button(window, text="Clear", width=10, height=1, bg="orange", command=clear).place(x=70, y=150)
 
 

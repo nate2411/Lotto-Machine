@@ -52,66 +52,65 @@ def play():
     count = len(matched_numbers)
     print(count)
     if count == 1:
-        messagebox.showinfo("NOT YOUR DAY (⌣́_⌣̀)","Better luck next time. You have 1 number correct")
+        messagebox.showinfo("NOT YOUR DAY (⌣́_⌣̀)", "Better luck next time. You have 1 number correct ಠ_ಠ")
 
     elif count == 2:
-        messagebox.showinfo("YOU WON", "You have 2 numbers correct, You won a R20.00")
-
+        messagebox.showinfo("YOU WON", "You have 2 numbers correct, You won a R20.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°)")
+        window.destroy()
+        import bank_info
     elif count == 3:
-        messagebox.showinfo("YOU ARE A WINNER","You have 3 numbers correct. You won a R100.50")
-
+        messagebox.showinfo("YOU ARE A WINNER", "You have 3 numbers correct. You won a R100.50. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°)")
+        window.destroy()
+        import bank_info
     elif count == 4:
-        messagebox.showinfo("YOU ARE A WINNER ","You have 4 numbers correct. You won a R2384.00")
-
+        messagebox.showinfo("YOU ARE A WINNER ", "You have 4 numbers correct. You won a R2384.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°)")
+        window.destroy()
+        import bank_info
     elif count == 5:
-        messagebox.showinfo("YOU ARE A WINNER", "You have 5 numbers correct. You won a R8584.00")
-
+        messagebox.showinfo("YOU ARE A WINNER", "You have 5 numbers correct. You won a R8584.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°) ")
+        window.destroy()
+        import bank_info
     elif count == 6:
-        messagebox.showinfo("YOU ARE A WINNER","You have 6 numbers correct. You wom a R10000.00")
-
-    else: count == 0
-    messagebox.showinfo("NOT YOUR DAY (⌣́_⌣̀)","Better luck next time. You have 0 numbers correct")
-
-
+        messagebox.showinfo("YOU ARE A WINNER", "You have 6 numbers correct. You wom a R10000.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°) ")
+        window.destroy()
+        import bank_info
+    else:
+        messagebox.showinfo("NOT YOUR DAY (⌣́_⌣̀)", "Better luck next time. You have 0 numbers correct ಠ_ಠ")
 
 
 Label(window, width="300", text="Please enter details below", bg="orange", fg="white").pack()
 Label(window, text="Choose Your Numbers", fg='black', font=("Helvetica", 16)).place(x=100, y=20)
 
 w_1 = Spinbox(window, from_=1, to=49, width=4, textvariable=var)
-w_1.place(x=20,y=70)
+w_1.place(x=20, y=70)
 w_2 = Spinbox(window, from_=1, to=49, width=4, textvariable=var2)
-w_2.place(x=90,y=70)
+w_2.place(x=90, y=70)
 w_3 = Spinbox(window, from_=1, to=49, width=4, textvariable=var3)
-w_3.place(x=150,y=70)
+w_3.place(x=150, y=70)
 w_4 = Spinbox(window, from_=1, to=49, width=4, textvariable=var4)
-w_4.place(x=210,y=70)
+w_4.place(x=210, y=70)
 w_5 = Spinbox(window, from_=1, to=49, width=4, textvariable=var5)
-w_5.place(x=270,y=70)
+w_5.place(x=270, y=70)
 w_6 = Spinbox(window, from_=1, to=49, width=4, textvariable=var6)
-w_6.place(x=330,y=70)
+w_6.place(x=330, y=70)
 btn = Button(window, text="Enter", width=10, height=1, bg="orange", command=play)
 btn.place(x=80, y=120)
 Button(window, text="Reset", width=10, height=1, bg="orange", command=reset).place(x=220, y=120)
 
-Label(window, text="Results", fg="black", font=("Helvetica", 16)).place(x=160,y=170)
-stuff_1 = Entry(window, width=4 , border=4)
-stuff_1.place(x=20,y=200)
-stuff_2 = Entry(window, width=4 , border=4)
-stuff_2.place(x=90,y=200)
-stuff_3 = Entry(window, width=4 , border=4)
-stuff_3.place(x=150,y=200)
-stuff_4= Entry(window, width=4 , border=4)
-stuff_4.place(x=210,y=200)
-stuff_5= Entry(window, width=4 , border=4)
-stuff_5.place(x=270,y=200)
-stuff_6= Entry(window, width=4 , border=4)
-stuff_6.place(x=330,y=200)
+Label(window, text="Results", fg="black", font=("Helvetica", 16)).place(x=160, y=170)
+stuff_1 = Entry(window, width=4, border=4)
+stuff_1.place(x=20, y=200)
+stuff_2 = Entry(window, width=4, border=4)
+stuff_2.place(x=90, y=200)
+stuff_3 = Entry(window, width=4, border=4)
+stuff_3.place(x=150, y=200)
+stuff_4 = Entry(window, width=4, border=4)
+stuff_4.place(x=210, y=200)
+stuff_5 = Entry(window, width=4, border=4)
+stuff_5.place(x=270, y=200)
+stuff_6 = Entry(window, width=4, border=4)
+stuff_6.place(x=330, y=200)
 Button(window, text="Clear", width=10, height=1, bg="orange", command=clear).place(x=150, y=240)
-
-
-
-
 
 
 window.mainloop()

@@ -18,9 +18,9 @@ def login():
 
     #applying empty validation
     if uname=='' or pwd=='' or em=="" :
-        message_var.set("fill the empty field!!!")
+        messagebox.showinfo("PLEASE INSERT DETAILS","fill the empty field!!!")
     elif uname=="Nathandj" and pwd=="dejager" and em=="nathan@email.com":
-        message_var.set("Login success")
+        messagebox.showinfo("LETS PLAY","Login success")
         login_screen.destroy()
         import lucky_numbers
 
