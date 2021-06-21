@@ -1,7 +1,7 @@
 import random
 from tkinter import *
 from tkinter import messagebox
-
+from playsound import playsound
 
 window = Tk()
 window.title("Lucky Numbers")
@@ -39,6 +39,7 @@ def play():
         numbers = random.randint(1, 49)
         if numbers not in random_numbers:
             random_numbers.append(numbers)
+
     stuff_1.insert(0, random_numbers[0])
     stuff_2.insert(0, random_numbers[1])
     stuff_3.insert(0, random_numbers[2])
@@ -52,29 +53,41 @@ def play():
     count = len(matched_numbers)
     print(count)
     if count == 1:
+        playsound("Mario.mp3")
         messagebox.showinfo("NOT YOUR DAY (⌣́_⌣̀)", "Better luck next time. You have 1 number correct ಠ_ಠ")
 
     elif count == 2:
+        playsound("Award.mp3")
+        with open("login.txt", "w+") as file:
+             file.write("numbers: " + str(numbers_to_enter))
+             file.write("\n")
+             file.write("matched numbers: " + str(matched_numbers))
+
         messagebox.showinfo("YOU WON", "You have 2 numbers correct, You won a R20.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°)")
         window.destroy()
         import bank_info
     elif count == 3:
+        playsound("Award.mp3")
         messagebox.showinfo("YOU ARE A WINNER", "You have 3 numbers correct. You won a R100.50. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°)")
         window.destroy()
         import bank_info
     elif count == 4:
+        playsound("Award.mp3")
         messagebox.showinfo("YOU ARE A WINNER ", "You have 4 numbers correct. You won a R2384.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°)")
         window.destroy()
         import bank_info
     elif count == 5:
+        playsound("Award.mp3")
         messagebox.showinfo("YOU ARE A WINNER", "You have 5 numbers correct. You won a R8584.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°) ")
         window.destroy()
         import bank_info
     elif count == 6:
+        playsound("Award.mp3")
         messagebox.showinfo("YOU ARE A WINNER", "You have 6 numbers correct. You wom a R10000.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°) ")
         window.destroy()
         import bank_info
     else:
+        playsound("Mario.mp3")
         messagebox.showinfo("NOT YOUR DAY (⌣́_⌣̀)", "Better luck next time. You have 0 numbers correct ಠ_ಠ")
 
 

