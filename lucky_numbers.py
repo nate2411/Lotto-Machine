@@ -57,32 +57,32 @@ def play():
         messagebox.showinfo("NOT YOUR DAY (⌣́_⌣̀)", "Better luck next time. You have 1 number correct ಠ_ಠ")
 
     elif count == 2:
-        playsound("Award.mp3")
+        playsound("Drumroll.mp3")
+        messagebox.showinfo("YOU WON", "You have 2 numbers correct, You won a R20.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°)")
         with open("login.txt", "w+") as file:
              file.write("numbers: " + str(numbers_to_enter))
              file.write("\n")
              file.write("matched numbers: " + str(matched_numbers))
 
-        messagebox.showinfo("YOU WON", "You have 2 numbers correct, You won a R20.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°)")
         window.destroy()
         import bank_info
     elif count == 3:
-        playsound("Award.mp3")
+        playsound("Drumroll.mp3")
         messagebox.showinfo("YOU ARE A WINNER", "You have 3 numbers correct. You won a R100.50. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°)")
         window.destroy()
         import bank_info
     elif count == 4:
-        playsound("Award.mp3")
+        playsound("Drumroll.mp3")
         messagebox.showinfo("YOU ARE A WINNER ", "You have 4 numbers correct. You won a R2384.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°)")
         window.destroy()
         import bank_info
     elif count == 5:
-        playsound("Award.mp3")
+        playsound("Drumroll.mp3")
         messagebox.showinfo("YOU ARE A WINNER", "You have 5 numbers correct. You won a R8584.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°) ")
         window.destroy()
         import bank_info
     elif count == 6:
-        playsound("Award.mp3")
+        playsound("Drumroll.mp3")
         messagebox.showinfo("YOU ARE A WINNER", "You have 6 numbers correct. You wom a R10000.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°) ")
         window.destroy()
         import bank_info

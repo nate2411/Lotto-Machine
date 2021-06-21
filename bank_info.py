@@ -21,24 +21,26 @@ def send_email():
     with open("login.txt", "r") as file:
         for line in file:
             print(line)
+            if "email: " in line:
+                print(line)
 
-    from smtplib import SMTP
-
-    try:
-        sender_email = "dejagernathan99@gmail.com"
-        receiver_email = "luyandadingindlela@gmail.com"
-        password = "nathan,001"
-        server = SMTP('smtp.gmail.com', 587)
-        server.starttls()
-
-        server.login(sender_email, password )
-        server.sendmail(sender_email, receiver_email, 'This is a test email.')
-        print("the message has been successfully sent")
-
-    except Exception as err:
-        print("Something went wrong..", err)
-    finally:
-        server.close()
+    # from smtplib import SMTP
+    #
+    # try:
+    #     sender_email = "dejagernathan99@gmail.com"
+    #     receiver_email = "luyandadingindlela@gmail.com"
+    #     password = "nathan,001"
+    #     server = SMTP('smtp.gmail.com', 587)
+    #     server.starttls()
+    #
+    #     server.login(sender_email, password )
+    #     server.sendmail(sender_email, receiver_email, 'This is a test email.')
+    #     print("the message has been successfully sent")
+    #
+    # except Exception as err:
+    #     print("Something went wrong..", err)
+    # finally:
+    #     server.close()
 
 
 
@@ -66,7 +68,7 @@ def enter():
                 file.write("\n")
                 file.write("account numbers: " + str(number_ent))
                 file.write("\n")
-                file.write("bank name: " + str(bankchoosen))
+                file.write("bank name: " + str(bankchoosen.get))
 
         send_email()
 
@@ -91,7 +93,7 @@ bankchoosen['values'] = ('Standard Bank ',
                          'FNB',
                          'Investec'
                          )
-bankchoosen.current()
+# bankchoosen.current()
 
 Label(window, text="Account Holder Name", fg='black', font=("Helvetica", 16)).place(x=80,y=90)
 n_1= Entry(window, width=20  )
