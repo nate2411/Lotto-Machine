@@ -40,6 +40,13 @@ def play():
         if numbers not in random_numbers:
             random_numbers.append(numbers)
 
+    stuff_1.delete(0, END)
+    stuff_2.delete(0, END)
+    stuff_3.delete(0, END)
+    stuff_4.delete(0, END)
+    stuff_5.delete(0, END)
+    stuff_6.delete(0, END)
+
     stuff_1.insert(0, random_numbers[0])
     stuff_2.insert(0, random_numbers[1])
     stuff_3.insert(0, random_numbers[2])
@@ -59,7 +66,7 @@ def play():
     elif count == 2:
         playsound("Drumroll.mp3")
         messagebox.showinfo("YOU WON", "You have 2 numbers correct, You won a R20.00. CLAIM YOUR PRIZE ( ͡° ͜ʖ ͡°)")
-        with open("login.txt", "w+") as file:
+        with open("login.txt", "a+") as file:
              file.write("numbers: " + str(numbers_to_enter))
              file.write("\n")
              file.write("matched numbers: " + str(matched_numbers))

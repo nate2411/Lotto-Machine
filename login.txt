@@ -1,3 +1,0 @@
-name: fxgtjchyukgilho`3r4et5ry6t7`
-account numbers: 12345678
-bank name: <bound method Entry.get of <tkinter.ttk.Combobox object .!combobox>>

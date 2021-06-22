@@ -20,27 +20,26 @@ def clear():
 def send_email():
     with open("login.txt", "r") as file:
         for line in file:
-            print(line)
             if "email: " in line:
-                print(line)
+                email = line.split(": ")[1][:-1]
 
-    # from smtplib import SMTP
-    #
-    # try:
-    #     sender_email = "dejagernathan99@gmail.com"
-    #     receiver_email = "luyandadingindlela@gmail.com"
-    #     password = "nathan,001"
-    #     server = SMTP('smtp.gmail.com', 587)
-    #     server.starttls()
-    #
-    #     server.login(sender_email, password )
-    #     server.sendmail(sender_email, receiver_email, 'This is a test email.')
-    #     print("the message has been successfully sent")
-    #
-    # except Exception as err:
-    #     print("Something went wrong..", err)
-    # finally:
-    #     server.close()
+    from smtplib import SMTP
+
+    try:
+        sender_email = "dejagernathan99@gmail.com"
+        receiver_email = email
+        password = "nathan,001"
+        server = SMTP('smtp.gmail.com', 587)
+        server.starttls()
+
+        server.login(sender_email, password )
+        server.sendmail(sender_email, receiver_email, 'This is a test email.')
+        print("the message has been successfully sent")
+
+    except Exception as err:
+        print("Something went wrong..", err)
+    finally:
+        server.close()
 
 
 
@@ -62,13 +61,14 @@ def enter():
             if bankchoosen.get() == 'Select Bank':
                raise ValueError
 
+            user_bank = bankchoosen.get()
 
-            with open("login.txt", "w+") as file:
+            with open("login.txt", "a+") as file:
                 file.write("name: " + str(name_ent))
                 file.write("\n")
                 file.write("account numbers: " + str(number_ent))
                 file.write("\n")
-                file.write("bank name: " + str(bankchoosen.get))
+                file.write("bank name: " + user_bank)
 
         send_email()
 
